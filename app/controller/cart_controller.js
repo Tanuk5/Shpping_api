@@ -4,18 +4,6 @@ const http_formatter = require('../util/http_formatter');
 const getCartItem = async (request, response) => {
     try {
         const carts = await Cart.find({}).populate('user products.product')
-        // .populate({
-        //     path: 'products.product'
-        // });
-        // if you want to select and do multiple populate
-        // .populate({
-        //     path: 'user',
-        //     select: 'name phone email address',
-        // }).
-        // populate({
-        //     path: 'products',
-        //     select: 'name price description'
-        // });
         return response.status(200).json(http_formatter(carts));
     } catch (error) {
         
